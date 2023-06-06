@@ -1,7 +1,7 @@
 import { Usuario } from "./usuario.model";
 
 export class Servidor extends Usuario {
-  private _matricula: string = "";
+  public matricula: string = "";
 
   constructor(
     id?: number,
@@ -12,14 +12,6 @@ export class Servidor extends Usuario {
     matricula?: string
   ) {
     super(id, nome, email, telefone, senha);
-    if (matricula) this._matricula = matricula;
-  }
-
-  get matricula(): string {
-    return this._matricula;
-  }
-
-  set matricula(matricula: string) {
-    this._matricula = matricula;
+    if (matricula) this.matricula = matricula;
   }
 }
