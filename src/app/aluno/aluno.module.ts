@@ -5,17 +5,24 @@ import { RouterModule } from '@angular/router';
 
 import { AutocadastroComponent } from './autocadastro/autocadastro.component';
 import { HomeAlunoComponent } from './home-aluno/home-aluno.component';
-
-
-
+import { AlunoService } from './services/aluno.service';
+import { NgxMaskModule } from 'ngx-mask';
+import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
 
 @NgModule({
   declarations: [
     AutocadastroComponent,
-    HomeAlunoComponent
+    HomeAlunoComponent,
+    EditarAlunoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    NgxMaskModule.forRoot()
+  ],
+  providers: [
+    AlunoService
   ]
 })
 export class AlunoModule { }

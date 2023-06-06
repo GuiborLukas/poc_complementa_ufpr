@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AlunoService } from '../services/aluno.service';
+
+import { Aluno } from 'src/app/shared/models/aluno.model';
 
 @Component({
   selector: 'app-home-aluno',
@@ -6,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-aluno.component.css']
 })
 export class HomeAlunoComponent {
+  
+  constructor(
+    private alunoService : AlunoService
+  ) { }
 
+  ngOnInit(): void {
+    
+  }
 }

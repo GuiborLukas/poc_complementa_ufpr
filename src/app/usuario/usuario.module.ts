@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { UsuarioService } from './services/usuario.service';
 import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
@@ -9,7 +10,8 @@ import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
     HomeUsuarioComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   providers: [
     UsuarioService

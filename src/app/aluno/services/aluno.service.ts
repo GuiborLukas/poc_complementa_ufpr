@@ -29,6 +29,11 @@ export class AlunoService {
     return alunos.find(aluno => aluno.id === id);
   }
 
+  buscarAlunoPorEmail(email: string): Aluno | undefined {
+    const alunos = this.listarTodosAlunos();
+    return alunos.find(aluno => aluno.email === email);
+  }
+
   atualizarAluno(aluno: Aluno): void {
     const alunos: Aluno[] = this.listarTodosAlunos();
 
