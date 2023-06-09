@@ -10,3 +10,5 @@ export * from './orientador.model';
 export * from './projeto.model';
 export * from './servidor.model';
 export * from './usuario.model';
+export * from './papel.enum';
+export * from './status.enum';

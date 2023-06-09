@@ -4,11 +4,12 @@ import { HomeAlunoComponent } from './aluno/home-aluno/home-aluno.component';
 import { AutocadastroComponent } from './aluno/autocadastro/autocadastro.component';
 import { HomeUsuarioComponent } from './usuario/home-usuario/home-usuario.component';
 import { EditarAlunoComponent } from './aluno/editar-aluno/editar-aluno.component';
+import { LoginRoutes } from './auth/auth-routing.module';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'aluno',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
   {
     path: 'admin/home',
     component: HomeUsuarioComponent
-  }
+  },
+  ...LoginRoutes
 ];
 
 @NgModule({
