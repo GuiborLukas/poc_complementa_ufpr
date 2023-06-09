@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Aluno } from 'src/app/shared/models/aluno.model';
 import * as bcrypt from 'bcryptjs';
-
+import { Aluno } from 'src/app/shared';
 import { AlunoService } from '../services/aluno.service';
 
 @Component({
@@ -17,11 +16,15 @@ export class EditarAlunoComponent {
 
   aluno!: Aluno;
 
+  senhaAtual: string = '';
   senha: string = '';
   confirmarSenha: string = '';
   senhaValida: boolean = false;
+  mostrarSenhaAtual: boolean = false;
   mostrarSenha: boolean = false;
+  mostrarConfirmarSenha: boolean = false;
   grrValido: boolean = true;
+  senhaCorreta: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,9 +47,26 @@ export class EditarAlunoComponent {
 
   atualizar(): void {
     if (this.formAluno.form.valid) {
+      if (this.senha !== '' || this.confirmarSenha !== '' || this.senhaAtual !== '') {
+        if (confirm(`Deseja realmente atualizar sua senha?`)) {
+          this.validaSenhaAtual();
+          if (this.senhaCorreta) {
+            const hash = bcrypt.hashSync(this.senha, 10);
+            this.aluno.senha = hash;
+          }
+        }
+      }
+      
       this.alunoService.atualizarAluno(this.aluno);
       this.router.navigate(["/admin/home"]);
     }
+  }
+
+  validaSenhaAtual() {
+    const hash = bcrypt.hashSync(this.senhaAtual, 10);
+    const isSenhaAtualCorreta = bcrypt.compareSync(this.aluno.senha, hash);
+
+    this.senhaCorreta = isSenhaAtualCorreta;
   }
 
   verificarSenha() {
@@ -64,7 +84,7 @@ export class EditarAlunoComponent {
   }
 
   validarGRR() {
-    const regex = /^[0-9]*$/;
+    const regex = /^20\d{6}$/;
     this.grrValido = regex.test(this.aluno.grr);
   }
 

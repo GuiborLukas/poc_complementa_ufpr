@@ -26,7 +26,8 @@
                     [routerLink]="['/aluno/editar', aluno.id]">
                     <i class="fa fa-edit" aria-hidden="true"></i> Editar
                 </a>
-                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger">
+                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger"
+                    (click)="removerAluno($event, aluno)">
                     <i class="fa fa-times" aria-hidden="true"></i> Remover
                 </a>
             </td>

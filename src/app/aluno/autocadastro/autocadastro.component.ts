@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Aluno } from 'src/app/shared/models/aluno.model';
+import { Aluno } from 'src/app/shared';
 import * as bcrypt from 'bcryptjs';
 
 import { AlunoService } from '../services/aluno.service';
@@ -21,6 +21,7 @@ export class AutocadastroComponent implements OnInit {
   confirmarSenha: string = '';
   senhaValida: boolean = false;
   mostrarSenha: boolean = false;
+  mostrarConfirmarSenha: boolean = false;
   grrValido: boolean = true;
 
   constructor(
@@ -64,7 +65,7 @@ export class AutocadastroComponent implements OnInit {
   }
 
   validarGRR() {
-    const regex = /^[0-9]*$/;
+    const regex = /^20\d{6}$/;
     this.grrValido = regex.test(this.aluno.grr);
   }
 

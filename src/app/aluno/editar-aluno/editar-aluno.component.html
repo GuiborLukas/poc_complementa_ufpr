@@ -10,7 +10,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
     <meta name="robots" content="noindex,nofollow" />
-    <title>Complementa UFPR - Autocadastro</title>
+    <title>Complementa UFPR - Editar Aluno</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Auto Cadastro</h4>
+                        <h4 class="page-title">Editar Aluno</h4>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label for="email">E-mail da UFPR:</label>
                             <input type="text" class="form-control" id="email" name="email" [(ngModel)]="aluno.email"
-                                #email="ngModel" minlength="2" placeholder="ex. nome.aluno@ufpr.br" required pattern="^[a-zA-Z0-9._%+-]+@ufpr\.br$" />
+                                #email="ngModel" minlength="2" placeholder="ex. nome.aluno@ufpr.br" required email readonly pattern="^[a-zA-Z0-9._%+-]+@ufpr\.br$" />
                             <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
                                 <div [hidden]="!email?.errors?.['required']">
                                     Digite o email do aluno.
@@ -56,6 +56,62 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="senhaAtual">Senha Atual:</label>
+                            <div class="input-group">
+                                <input type="{{ mostrarSenhaAtual ? 'text' : 'password' }}" class="form-control"
+                                    id="senhaAtual" name="senhaAtual" [(ngModel)]="senhaAtual" minlength="8"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        (click)="mostrarSenhaAtual = !mostrarSenhaAtual">
+                                        <i [class]="mostrarSenhaAtual ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Nova Senha:</label>
+                            <div class="input-group">
+                                <input type="{{ mostrarSenha ? 'text' : 'password' }}" class="form-control" id="senha"
+                                    name="senha" [(ngModel)]="senha" minlength="8" (input)="verificarSenha()" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        (click)="mostrarSenha = !mostrarSenha">
+                                        <i [class]="mostrarSenha ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="!senhaValida && senha !== '' && confirmarSenha !== ''" class="alert alert-danger">
+                            • Deve ter pelo menos 8 e no máximo 16 caracteres. <br>
+                            • Deve conter pelo menos um caractere especial (!@#$%^&*()]).<br>
+                            • Deve conter pelo menos um caractere numérico. <br>
+                            • Deve conter pelo menos uma letra maiúscula. <br>
+                            • Deve conter pelo menos uma letra minúscula. <br>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmarSenha">Confirmar Nova Senha:</label>
+                            <div class="input-group">
+                                <input type="{{ mostrarConfirmarSenha ? 'text' : 'password' }}" class="form-control"
+                                    id="confirmarSenha" name="confirmarSenha" [(ngModel)]="confirmarSenha"
+                                    minlength="8" (input)="verificarSenha()" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        (click)="mostrarConfirmarSenha = !mostrarConfirmarSenha">
+                                        <i [class]="mostrarConfirmarSenha ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="senha !== confirmarSenha" class="alert alert-danger">
+                                As senhas não correspondem.
+                            </div>
+                        </div>
+
+                        <div *ngIf="senhaValida" class="alert alert-success">
+                            Senha válida.
+                        </div>
+
                         <div class="form-group">
                             <label for="telefone">Celular:</label>
                             <input type="text" class="form-control" id="telefone" name="telefone" placeholder="ex. (41)99999-9999"
@@ -74,9 +130,9 @@
                         </div>
                         <div class="form-group">
                             <label for="grr">GRR:</label>
-                            <input type="text" class="form-control" id="grr" name="grr" [(ngModel)]="aluno.grr" #grr="ngModel"
-                              required mask="00000000" placeholder="ex. 20100000" (input)="validarGRR()" />
-                            <div *ngIf="!grrValido && aluno.grr" class="alert alert-danger">
+                            <input type="text" class="form-control" id="grr" name="grr" [(ngModel)]="aluno.grr"
+                              required numerico mask="00000000" placeholder="ex. 20100000" (input)="validarGRR()" />
+                            <div *ngIf="!grrValido" class="alert alert-danger">
                               O GRR deve conter apenas números.
                             </div>
                           </div>
@@ -85,7 +141,7 @@
                             <label for="graduacao">Graduação:</label>
                             <select class="form-control" id="graduacao" name="graduacao"
                                 [(ngModel)]="aluno.graduacao" required>
-                                <option value="" disabled >Selecione o Curso</option>
+                                <option value="" disabled selected>Selecione o Curso</option>
                                 <option value="Tecnologia em Análise e Desenvolvimento de Sistemas">Tecnologia em Análise e Desenvolvimento de Sistemas</option>
                             </select>
                         </div>

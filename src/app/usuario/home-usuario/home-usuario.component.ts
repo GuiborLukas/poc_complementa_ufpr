@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { AlunoService } from 'src/app/aluno/services/aluno.service';
-import { Aluno } from 'src/app/shared/models/aluno.model';
+import { Aluno } from 'src/app/shared';
 
 @Component({
   selector: 'app-home-usuario',
@@ -17,11 +17,19 @@ export class HomeUsuarioComponent {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void{
-    this.alunos = this.listarTodosUsuarios();
+    this.alunos = this.listarTodosAlunos();
   }
 
-  listarTodosUsuarios(): Aluno[] {
+  listarTodosAlunos(): Aluno[] {
     return this.alunoService.listarTodosAlunos();
+  }
+
+  removerAluno($event: any, aluno: Aluno): void {
+    $event.preventDefault();
+    if(confirm(`Deseja realmente remover o aluno ${aluno.nome}?`)){
+      this.alunoService.removerAluno(aluno.id);
+      this.alunos = this.listarTodosAlunos();
+    }
   }
 
 }

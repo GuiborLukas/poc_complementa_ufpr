@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AlunoModule } from './aluno/aluno.module';
+import { SharedModule } from './shared';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AlunoModule } from './aluno/aluno.module';
     BrowserModule,
     AppRoutingModule,
     UsuarioModule,
-    AlunoModule
+    AlunoModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
