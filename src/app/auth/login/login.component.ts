@@ -1,49 +1,50 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Login, Usuario} from 'src/app/shared';
 import { LoginService } from '../services/login.service';
-import { Login } from 'src/app/shared';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   @ViewChild('formLogin') formLogin!: NgForm;
   login: Login = new Login();
   loading: boolean = false;
   message!: string;
-  
+
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute
+  ) {
     if (this.loginService.usuarioLogado) {
       this.router.navigate(["/admin/home"]);
     }
   }
 
   ngOnInit(): void {
-    this.route.queryParams
-      .subscribe(params => {
-        this.message = params['error'];
-      });
+    this.route.queryParams.subscribe((params: any) => {
+      this.message = params['error'];
+    });
   }
 
   logar(): void {
     this.loading = true;
     if (this.formLogin.form.valid) {
-      this.loginService.login(this.login).subscribe((usu) => {
-        if (usu != null) {
-          this.loginService.usuarioLogado = usu;
-          this.loading = false;
-          this.router. navigate(["/admin/home"]);
-        }
-        else {
-          this.message = "Usuário/Senha inválidos.";
-        }
-      });
+      this.loginService.login(this.login).subscribe(
+        (usuarios: Usuario[]) => {
+          if ((usuarios != null) && (usuarios.length > 0)) {
+            let usu = usuarios[0];
+            this.loginService.usuarioLogado = usu;
+            this.loading = false;
+            this.router.navigate([`${usu.papel}`]);
+          } else {
+            this.message = 'Usuário/Senha inválidos.';
+          }
+        });
     }
     this.loading = false;
   }

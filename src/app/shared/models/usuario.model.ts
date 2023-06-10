@@ -1,12 +1,10 @@
-import { Papel } from "./papel.enum";
-
 export class Usuario {
     public id!: number;
     public nome: string = "";
     public email: string = "";
     public telefone: string = "";
     public senha: string = "";
-    public papel!: Papel;
+    public papel: string = "";
 
     constructor(
         id?: number,
@@ -14,7 +12,7 @@ export class Usuario {
         email?: string,
         telefone?: string,
         senha?: string,
-        papel?: Papel) {
+        papel?: string) {
         if(id) this.id = id;
         if(nome) this.nome = nome;
         if(email) this.email = email;

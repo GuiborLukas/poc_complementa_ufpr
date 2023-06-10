@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AlunoModule } from './aluno/aluno.module';
 import { SharedModule } from './shared';
 import { AuthModule } from './auth/auth.module';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -21,8 +19,7 @@ import { RouterModule } from '@angular/router';
     AlunoModule,
     AuthModule,
     SharedModule,
-    FormsModule,
-    RouterModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

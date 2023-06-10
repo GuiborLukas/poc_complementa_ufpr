@@ -1,37 +1,96 @@
-<h1>Alunos</h1>
-<table class="table table-striped table-bordered table-hover">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <th>GRR</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Celular</th>
-            <th>Graduação</th>
-            <th class="text-center">
-                <a href="#" title="Novo" alt="Novo" class="btn btn-xs btn-success">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Novo
-                </a>
-            </th>
-        </tr>
-        <tr *ngFor="let aluno of alunos">
-            <td> {{aluno.id}} </td>
-            <td> {{aluno.grr}} </td>
-            <td> {{aluno.nome}} </td>
-            <td> {{aluno.email}} </td>
-            <td> {{aluno.telefone}} </td>
-            <td> {{aluno.graduacao}} </td>
-            <td class="text-center" style="width: 300px">
-                <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-info"
-                    [routerLink]="['/aluno/editar', aluno.id]">
-                    <i class="fa fa-edit" aria-hidden="true"></i> Editar
-                </a>
-                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger"
-                    (click)="removerAluno($event, aluno)">
-                    <i class="fa fa-times" aria-hidden="true"></i> Remover
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<p *ngIf="alunos.length==0">Nenhum usuario cadastrado.</p>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template" />
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Bantads</title>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb bg-white">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Alunos</h4>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Listar Clientes -->
+            <!-- ============================================================== -->
+                <table class="table table-striped table-bordered table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <th>GRR</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Celular</th>
+                            <th>Graduação</th>
+                            <th class="text-center">
+                                <a href="#" title="Novo" alt="Novo" class="btn btn-xs btn-success">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Novo
+                                </a>
+                            </th>
+                        </tr>
+                        <tr *ngFor="let aluno of alunos">
+                            <td> {{aluno.id}} </td>
+                            <td> {{aluno.grr}} </td>
+                            <td> {{aluno.nome}} </td>
+                            <td> {{aluno.email}} </td>
+                            <td> {{aluno.telefone}} </td>
+                            <td> {{aluno.graduacao}} </td>
+                            <td class="text-center" style="width: 300px">
+                                <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-info"
+                                    [routerLink]="['/aluno/editar', aluno.id]">
+                                    <i class="fa fa-edit" aria-hidden="true"></i> Editar
+                                </a>
+                                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger"
+                                    (click)="removerAluno($event, aluno)">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Remover
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p *ngIf="alunos.length==0">Nenhum usuario cadastrado.</p>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">2023 © Complementa UFPR</footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+</body>
+
+</html>

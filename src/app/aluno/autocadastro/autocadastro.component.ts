@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Aluno } from 'src/app/shared';
+
 import * as bcrypt from 'bcryptjs';
 
+import { Aluno } from 'src/app/shared';
 import { AlunoService } from '../services/aluno.service';
 
 @Component({
@@ -36,8 +37,7 @@ export class AutocadastroComponent implements OnInit {
 
   autocadastrar(): void {
     if (this.formAluno.form.valid) {
-      const hash = bcrypt.hashSync(this.senha, 10);
-      this.aluno.senha = hash;
+      this.aluno.senha = this.senha;
       // Verificar se o e-mail já está cadastrado
       const alunoExistente = this.alunoService.buscarAlunoPorEmail(this.aluno.email);
       if (alunoExistente) {

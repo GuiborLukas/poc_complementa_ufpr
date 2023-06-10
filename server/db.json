@@ -1,0 +1,29 @@
+{
+"usuarios": [
+    {
+    "id": 1,
+    "nome": "Aluno",
+    "email": "aluno",
+    "telefone": "(41)99999-9999",
+    "senha": "aluno",
+    "papel": "aluno"
+    },
+    {
+    "id": 2,
+    "nome": "Admin",
+    "email": "admin",
+    "telefone": "(41)99999-9999",
+    "senha": "admin",
+    "papel": "admin"
+    },
+    {
+    "id": 3,
+    "nome": "Orientador",
+    "email": "orientador",
+    "telefone": "(41)99999-9999",
+    "senha": "orientador",
+    "papel": "orientador"
+    }
+    ]
+}
+

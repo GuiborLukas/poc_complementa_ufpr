@@ -10,7 +10,8 @@ import { HomeUsuarioComponent } from './home-usuario/home-usuario.component';
     HomeUsuarioComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   providers: [
     UsuarioService
