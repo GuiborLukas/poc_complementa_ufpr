@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +18,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.ufpr.dto.UsuarioDTO;
 import br.ufpr.model.Usuario;
 import br.ufpr.repository.UsuarioRepository;
 
+@CrossOrigin
+@RestController
 @RequestMapping(value = "usuarios")
 public class UsuarioREST {
 	@Autowired
@@ -137,7 +141,7 @@ public class UsuarioREST {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<UsuarioDTO> atualizaUsuario(@PathVariable String id, @RequestBody Usuario usuarioAtualizado) {
+	public ResponseEntity<UsuarioDTO> atualizarUsuario(@PathVariable String id, @RequestBody Usuario usuarioAtualizado) {
 		try {
 			// Busca o usuario pelo ID
 			Optional<Usuario> usuOpt = repository.findById(id);

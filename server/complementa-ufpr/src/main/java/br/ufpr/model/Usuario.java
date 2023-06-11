@@ -10,13 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 
 @Entity
-@Table(name = "tb_usuarios")
+@Table(name = "tb_usuarios", uniqueConstraints = { @UniqueConstraint(columnNames = { "email_usuario" }) })
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
     private Long id;

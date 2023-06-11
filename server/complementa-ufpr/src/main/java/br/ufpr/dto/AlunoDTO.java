@@ -1,7 +1,5 @@
 package br.ufpr.dto;
 
-import br.ufpr.dto.GraduacaoDTO;
-
 public class AlunoDTO extends UsuarioDTO {
 	/**
 	 * 
