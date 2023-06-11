@@ -9,10 +9,11 @@ export class Coordenador extends Orientador {
         email?: string,
         telefone?: string,
         senha?: string,
+        papel?: string,
         matricula?: string,
         graduacao?: Graduacao
       ) {
-        super(id, nome, email, telefone, senha, matricula, graduacao);
+        super(id, nome, email, telefone, senha, papel, matricula, graduacao);
       }
       
 }

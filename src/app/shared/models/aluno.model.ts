@@ -11,10 +11,11 @@ export class Aluno extends Usuario {
     email?: string,
     telefone?: string,
     senha?: string,
+    papel?: string,
     grr?: string,
     graduacao?: Graduacao
   ) {
-    super(id, nome, email, telefone, senha);
+    super(id, nome, email, telefone, senha, papel);
     if (grr) this.grr = grr;
     if (graduacao) this.graduacao = graduacao;
   }

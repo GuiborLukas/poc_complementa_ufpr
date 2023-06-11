@@ -11,10 +11,11 @@ export class Orientador extends Servidor{
         email?: string,
         telefone?: string,
         senha?: string,
+        papel?: string,
         matricula?: string,
         graduacao?: Graduacao
       ) {
-        super(id, nome, email, telefone, senha, matricula);
+        super(id, nome, email, telefone, senha, papel, matricula);
         if (graduacao) this.graduacao = graduacao;
       }
 }

@@ -1,5 +1,6 @@
 import { Competencia } from "./competencia.model";
 import { Complexidade } from "./complexidade.model";
+import { Comentario } from "./comentario.model";
 
 export class Atividade {
   public id!: number;
@@ -10,6 +11,7 @@ export class Atividade {
   public dataConclusao: Date = new Date();
   public competencia!: Competencia;
   public complexidade!: Complexidade;
+  public comentarios!: Comentario[];
 
   constructor(
     id?: number,
@@ -19,7 +21,8 @@ export class Atividade {
     dataContestacao?: Date,
     dataConclusao?: Date,
     competencia?: Competencia,
-    complexidade?: Complexidade
+    complexidade?: Complexidade,
+    comentarios?: Comentario[]
   ) {
     if (id) this.id = id;
     if (nome) this.nome = nome;
@@ -27,9 +30,9 @@ export class Atividade {
     if (dataLimiteCandidatura) this.dataLimiteCandidatura = dataLimiteCandidatura;
     if (dataContestacao) this.dataContestacao = dataContestacao;
     if (dataConclusao) this.dataConclusao = dataConclusao;
-    if (competencia) this.competencia = new Competencia();
-    if (complexidade) this.complexidade = new Complexidade();
-
+    if (competencia) this.competencia = competencia;
+    if (complexidade) this.complexidade = complexidade;
+    if (comentarios) this.comentarios = comentarios;
   }
 
 }

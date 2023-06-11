@@ -9,9 +9,10 @@ export class Monitor extends Aluno {
         email?: string,
         telefone?: string,
         senha?: string,
+        papel?: string,
         grr?: string,
         graduacao?: Graduacao) {
-        super(id, nome, email, telefone, senha, grr, graduacao);
+        super(id, nome, email, telefone, senha, papel, grr, graduacao);
     }
 
 }

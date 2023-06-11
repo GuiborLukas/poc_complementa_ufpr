@@ -1,5 +1,6 @@
 export * from './aluno.model';
 export * from './atividade.model';
+export * from './comentario.model';
 export * from './competencia.model';
 export * from './complexidade.model';
 export * from './coordenador.model';

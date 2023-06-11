@@ -9,9 +9,10 @@ export class Servidor extends Usuario {
     email?: string,
     telefone?: string,
     senha?: string,
+    papel?: string,
     matricula?: string
   ) {
-    super(id, nome, email, telefone, senha);
+    super(id, nome, email, telefone, senha, papel);
     if (matricula) this.matricula = matricula;
   }
 }
