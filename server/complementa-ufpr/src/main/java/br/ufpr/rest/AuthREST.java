@@ -1,5 +1,7 @@
 package br.ufpr.rest;
 
+import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,23 +31,18 @@ public class AuthREST {
 
 		try {
 
-			Usuario usu = repository.findByEmail(login.getEmail());
+			Optional<Usuario> usuOpt = repository.findByEmail(login.getEmail());
 
 			// Se nao encontrou o usuario, retorna HTTP 401 - Unauthorized
-			if (usu == null) {
+			if (usuOpt.isEmpty()) {
 				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-			}
+			}			
+			Usuario usu = usuOpt.get();
 			// Se encontrou, valida o md5 da senha
-			// Exceto pra admin pq admin ja foi inserido manualmente no banco, ai pode
-			// passar so a senha direto
-
 			Boolean senhaValida;
 			System.out.println("Realizando validação do usuário " + usu.toString());
-			if (usu.getPapel().equals("ADMIN")) {
-				senhaValida = login.getSenha().equals(usu.getSenha());
-			} else {
 				senhaValida = bCryptPasswordEncoder.matches(login.getSenha(), usu.getSenha());
-			}
+			
 			// Se a validacao da senha deu erro, retorna HTTP 401 - Unauthorized
 			if (!senhaValida) {
 				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);

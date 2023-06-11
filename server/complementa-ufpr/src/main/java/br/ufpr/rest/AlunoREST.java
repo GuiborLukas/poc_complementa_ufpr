@@ -58,7 +58,7 @@ public class AlunoREST {
 	}
 
 	@PostMapping
-	public ResponseEntity<AlunoDTO> inserirAluno(@RequestBody AlunoDTO aluno) {
+	public ResponseEntity<AlunoDTO> inserirAluno(@RequestBody Aluno aluno) {
 
 		try {
 			Aluno aln = repo.save(mapper.map(aluno, Aluno.class));
