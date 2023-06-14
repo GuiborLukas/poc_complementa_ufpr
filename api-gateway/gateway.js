@@ -1,4 +1,5 @@
 require("dotenv-safe").config();
+const cors = require("cors");
 const jwt = require('jsonwebtoken');
 var http = require('http');
 const express = require('express')
@@ -10,6 +11,14 @@ const helmet = require('helmet');
 //setting up your port
 const PORT = process.env.PORT;
 const app = express();
+
+const corsOptions = {
+  origin: '*',
+  methods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -43,13 +52,41 @@ app.post('/logout', function (req, res) {
     res.json({ auth: false, token: null });
 })
 
+app.post('/usuarios', verifyJWT, (req, res, next) => {
+    servicesProxy(req, res, next);
+})
+
 app.get('/usuarios', verifyJWT, (req, res, next) => {
+  servicesProxy(req, res, next);
+})
+
+app.put('/usuarios', verifyJWT, (req, res, next) => {
+  servicesProxy(req, res, next);
+})
+
+app.delete('/usuarios', verifyJWT, (req, res, next) => {
+  servicesProxy(req, res, next);
+})
+
+app.post('/alunos', verifyJWT, (req, res, next) => {
     servicesProxy(req, res, next);
 })
 
 app.get('/alunos', verifyJWT, (req, res, next) => {
-    servicesProxy(req, res, next);
+  servicesProxy(req, res, next);
 })
+
+app.put('/alunos', verifyJWT, (req, res, next) => {
+  servicesProxy(req, res, next);
+})
+
+app.delete('/alunos', verifyJWT, (req, res, next) => {
+servicesProxy(req, res, next);
+})
+
+app.post('/alunos/autocadastro', (req, res, next) => {
+  servicesProxy(req, res, next);
+  })
 
 const authServiceProxy = httpProxy('http://localhost:5000', {
 

@@ -9,7 +9,7 @@ const LS_CHAVE: string = 'usuarioLogado';
   providedIn: 'root',
 })
 export class LoginService {
-  BASE_URL = "http://localhost:3000/usuarios/";
+  BASE_URL = "http://localhost:3000/login";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -35,7 +35,7 @@ export class LoginService {
   }
 
   login(login: Login): Observable<Usuario> {
-    return this.httpClient.post<Usuario>(this.BASE_URL, login, this.httpOptions);
+    return this.httpClient.post<Usuario>(this.BASE_URL, JSON.stringify(login), this.httpOptions);
     }
     
 }

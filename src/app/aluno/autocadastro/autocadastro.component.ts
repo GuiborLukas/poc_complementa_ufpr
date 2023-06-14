@@ -2,9 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import * as bcrypt from 'bcryptjs';
-
-import { Aluno } from 'src/app/shared';
+import { Aluno, Graduacao } from 'src/app/shared';
 import { AlunoService } from '../services/aluno.service';
 
 @Component({
@@ -38,7 +36,7 @@ export class AutocadastroComponent implements OnInit {
   autocadastrar(): void {
     if (this.formAluno.form.valid) {
       this.aluno.senha = this.senha;
-      this.alunoService.inserirAluno(this.aluno);
+      this.alunoService.autocadastrarAluno(this.aluno);
       this.router.navigate([""]);
     }
   }

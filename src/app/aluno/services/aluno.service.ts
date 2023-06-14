@@ -11,7 +11,7 @@ const LS_CHAVE: string = "alunos"
   providedIn: 'root'
 })
 export class AlunoService {
-  BASE_URL = "http://localhost:3000/alunos";
+  BASE_URL = "http://localhost:3000/alunos/";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -36,6 +36,10 @@ export class AlunoService {
 
   inserirAluno(aluno: Aluno): Observable<Aluno> {
     return this.httpClient.post<Aluno>(this.BASE_URL, JSON.stringify(aluno), this.httpOptions);
+  }
+
+  autocadastrarAluno(aluno: Aluno): Observable<Aluno> {
+    return this.httpClient.post<Aluno>(this.BASE_URL + 'autocadastro', JSON.stringify(aluno), this.httpOptions);
   }
 
   buscarAlunoPorId(id: number): Observable<Aluno> {
