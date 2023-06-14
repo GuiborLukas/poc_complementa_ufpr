@@ -71,4 +71,12 @@ public class Comentario implements Serializable {
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
+    
+    @Override
+    public String toString() {
+        return "ComentarioDTO [id=" + id +
+                ", usuario=" + usuario +
+                ", mensagem='" + mensagem + '\'' +
+                "]";
+    }
 }

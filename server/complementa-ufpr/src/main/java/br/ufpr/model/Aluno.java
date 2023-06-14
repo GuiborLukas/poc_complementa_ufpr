@@ -3,12 +3,15 @@ package br.ufpr.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_alunos")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Aluno extends Usuario {
 
     /**
@@ -48,4 +51,10 @@ public class Aluno extends Usuario {
     public void setGraduacao(Graduacao graduacao) {
         this.graduacao = graduacao;
     }
+    
+	@Override
+	public String toString() {
+		return "AlunoDTO [id=" + getId() + ", nome=" + getNome() + ", email=" + getEmail() + ", telefone="
+				+ getTelefone() + ", papel=" + getPapel() + ", grr=" + grr + ", graduacao=" + graduacao + "]";
+	}
 }

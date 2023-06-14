@@ -14,20 +14,6 @@ public class UsuarioDTO implements Serializable {
 	private String email;
 	private String telefone;
 	private String papel;
-	private boolean success;
-	private String message;
-	
-	public UsuarioDTO(Long id, String nome, String email, String telefone, String papel, boolean success, String message) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.telefone = telefone;
-		
-		this.papel = papel;
-		this.success = success;
-		this.message = message;
-	}
 
 	public UsuarioDTO(Long id, String nome, String email, String telefone, String papel) {
 		super();
@@ -82,26 +68,10 @@ public class UsuarioDTO implements Serializable {
 		this.papel = papel;
 	}
 
-	public boolean isSuccess() {
-		return success;
-	}
-
-	public void setSuccess(boolean success) {
-		this.success = success;
-	}
-
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", tipo=" + papel
 				+ "]";
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 }

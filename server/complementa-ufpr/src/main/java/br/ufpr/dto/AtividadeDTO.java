@@ -105,4 +105,19 @@ public class AtividadeDTO implements Serializable {
     public void setComentarios(List<ComentarioDTO> comentarios) {
         this.comentarios = comentarios;
     }
+    
+    @Override
+    public String toString() {
+        return "AtividadeDTO [id=" + getId() +
+                ", nome='" + getNome() + '\'' +
+                ", dataCriacao=" + getDataCriacao() +
+                ", dataLimiteCandidatura=" + getDataLimiteCandidatura() +
+                ", dataContestacao=" + getDataContestacao() +
+                ", dataConclusao=" + getDataConclusao() +
+                ", competencia=" + getCompetencia() +
+                ", complexidade=" + getComplexidade() +
+                ", comentarios=" + getComentarios() +
+                "]";
+    }
+
 }

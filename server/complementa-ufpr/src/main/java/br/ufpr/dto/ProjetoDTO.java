@@ -77,7 +77,13 @@ public class ProjetoDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ProjetoDTO [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", orientador=" + orientador
-                + ", alunos=" + alunos + ", monitores=" + monitores + "]";
+        return "ProjetoDTO [id=" + getId() +
+                ", nome='" + getNome() + '\'' +
+                ", descricao='" + getDescricao() + '\'' +
+                ", orientador=" + getOrientador() +
+                ", alunos=" + getAlunos() +
+                ", monitores=" + getMonitores() +
+                "]";
     }
+
 }

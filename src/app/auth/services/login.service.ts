@@ -11,6 +11,12 @@ const LS_CHAVE: string = 'usuarioLogado';
 export class LoginService {
   BASE_URL = "http://localhost:3000/usuarios/";
 
+  httpOptions = {
+    headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+    })
+    }; 
+
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -19,6 +25,7 @@ export class LoginService {
     let usu = localStorage[LS_CHAVE];
     return usu ? JSON.parse(localStorage[LS_CHAVE]) : null;
   }
+  
   public set usuarioLogado(usuario: Usuario) {
     localStorage[LS_CHAVE] = JSON.stringify(usuario);
   }
@@ -27,15 +34,8 @@ export class LoginService {
     delete localStorage[LS_CHAVE];
   }
 
-  login(login: Login): Observable<Usuario[]> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      params: new HttpParams().append('email', login.email!).append('senha', login.senha!)
-    };
-
-    return this.httpClient.get<Usuario[]>(this.BASE_URL, httpOptions);
-
-  }
+  login(login: Login): Observable<Usuario> {
+    return this.httpClient.post<Usuario>(this.BASE_URL, login, this.httpOptions);
+    }
+    
 }

@@ -30,7 +30,8 @@ public class CompetenciaDTO {
 
     @Override
     public String toString() {
-        return "CompetenciaDTO [id=" + id + ", nome=" + nome + "]";
+        return "CompetenciaDTO [id=" + getId() + ", nome=" + getNome() + "]";
     }
+
 }
 

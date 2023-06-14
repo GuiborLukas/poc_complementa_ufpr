@@ -40,7 +40,13 @@ export class EditarAlunoComponent {
     // Com o id, obtém a pessoa
     const res = this.alunoService.buscarAlunoPorId(id);
     if (res !== undefined)
-      this.aluno = res;
+      res.subscribe(
+        (aln: Aluno) => {
+          if(aln != null ){
+            this.aluno = aln;
+          }
+        }
+      )
     else
       throw new Error("Pessoa não encontrada: id = " + id);
   }

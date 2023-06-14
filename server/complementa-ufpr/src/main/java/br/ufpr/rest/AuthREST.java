@@ -30,7 +30,6 @@ public class AuthREST {
 	public ResponseEntity<UsuarioDTO> login(@RequestBody LoginDTO login) {
 
 		try {
-
 			Optional<Usuario> usuOpt = repository.findByEmail(login.getEmail());
 
 			// Se nao encontrou o usuario, retorna HTTP 401 - Unauthorized
@@ -48,6 +47,7 @@ public class AuthREST {
 				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 			}
 			return ResponseEntity.ok(mapper.map(usu, UsuarioDTO.class));
+			
 		} catch (Exception e) {
 			System.err.println("Erro inserir usuario:" + e.toString());
 			e.printStackTrace();

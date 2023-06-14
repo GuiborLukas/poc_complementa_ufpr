@@ -39,7 +39,7 @@ public class LoginDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "LoginDTO [email=" + email + ", senha=" + senha + "]";
+	    return "LoginDTO [email=" + getEmail() + ", senha=" + getSenha() + "]";
 	}
 
 }

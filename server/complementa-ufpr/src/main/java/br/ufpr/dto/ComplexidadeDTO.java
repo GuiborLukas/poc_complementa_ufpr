@@ -55,7 +55,8 @@ public class ComplexidadeDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ComplexidadeDTO [id=" + id + ", nome=" + nome + ", cargaHorariaMinima=" + cargaHorariaMinima
-                + ", cargaHorariaMaxima=" + cargaHorariaMaxima + "]";
+        return "ComplexidadeDTO [id=" + getId() + ", nome=" + getNome() + ", cargaHorariaMinima=" + getCargaHorariaMinima() +
+                ", cargaHorariaMaxima=" + getCargaHorariaMaxima() + "]";
     }
+
 }

@@ -138,4 +138,6 @@ public class Atividade implements Serializable {
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
+    
+
 }

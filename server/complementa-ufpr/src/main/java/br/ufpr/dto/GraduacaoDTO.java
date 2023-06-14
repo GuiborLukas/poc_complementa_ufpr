@@ -49,4 +49,11 @@ public class GraduacaoDTO implements Serializable {
     public void setCompetencias(List<CompetenciaDTO> competencias) {
         this.competencias = competencias;
     }
+    
+    @Override
+    public String toString() {
+        return "GraduacaoDTO [id=" + getId() + ", nome=" + getNome() + ", coordenador=" + getCoordenador() +
+                ", competencias=" + getCompetencias() + "]";
+    }
+
 }

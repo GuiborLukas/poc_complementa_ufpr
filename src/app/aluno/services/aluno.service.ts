@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { Aluno } from 'src/app/shared/models/aluno.model';
+import { Aluno } from 'src/app/shared';
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const LS_CHAVE: string = "alunos"
 
@@ -8,45 +11,43 @@ const LS_CHAVE: string = "alunos"
   providedIn: 'root'
 })
 export class AlunoService {
+  BASE_URL = "http://localhost:3000/alunos";
 
-  constructor() { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
-  listarTodosAlunos(): Aluno[] {
-    const alunos = localStorage[LS_CHAVE];
-    return alunos ? JSON.parse(alunos) : [];
+  public get alunoLogado(): Aluno {
+    let alunoLogado = localStorage[LS_CHAVE];
+    return alunoLogado ? JSON.parse(alunoLogado) : null;
   }
 
-  inserirAluno(aluno: Aluno): void {
-    const alunos = this.listarTodosAlunos();
-
-    aluno.id = new Date().getTime();
-    alunos.push(aluno);
-    localStorage[LS_CHAVE] = JSON.stringify(alunos);
+  public set alunoLogado(aluno: Aluno) {
+    localStorage[LS_CHAVE] = JSON.stringify(aluno)
   }
 
-  buscarAlunoPorId(id: number): Aluno | undefined {
-    const alunos = this.listarTodosAlunos();
-    return alunos.find(aluno => aluno.id === id);
+  constructor(private httpClient: HttpClient) { }
+
+  listarTodosAlunos(): Observable<Aluno[]> {
+    return this.httpClient.get<Aluno[]>(this.BASE_URL, this.httpOptions);
   }
 
-  buscarAlunoPorEmail(email: string): Aluno | undefined {
-    const alunos = this.listarTodosAlunos();
-    return alunos.find(aluno => aluno.email === email);
+  inserirAluno(aluno: Aluno): Observable<Aluno> {
+    return this.httpClient.post<Aluno>(this.BASE_URL, JSON.stringify(aluno), this.httpOptions);
   }
 
-  atualizarAluno(aluno: Aluno): void {
-    const alunos: Aluno[] = this.listarTodosAlunos();
-
-    alunos.forEach((obj, index, objs) => {
-      if (aluno.id === obj.id) {
-        objs[index] = aluno;
-      }
-    });
+  buscarAlunoPorId(id: number): Observable<Aluno> {
+    return this.httpClient.get<Aluno>(this.BASE_URL + id, this.httpOptions);
   }
 
-  removerAluno(id: number): void {
-    let alunos: Aluno[] = this.listarTodosAlunos();
-    alunos = alunos.filter(aluno => aluno.id !== id);
-    localStorage[LS_CHAVE] = JSON.stringify(alunos);
+  atualizarAluno(aluno: Aluno): Observable<Aluno> {
+    this.alunoLogado = aluno;
+    return this.httpClient.put<Aluno>(this.BASE_URL + aluno.id, JSON.stringify(aluno), this.httpOptions);
+  }
+
+  removerAluno(id: number): Observable<Aluno> {
+    return this.httpClient.delete<Aluno>(this.BASE_URL + id, this.httpOptions);
   }
 }

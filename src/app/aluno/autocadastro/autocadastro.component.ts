@@ -38,13 +38,6 @@ export class AutocadastroComponent implements OnInit {
   autocadastrar(): void {
     if (this.formAluno.form.valid) {
       this.aluno.senha = this.senha;
-      // Verificar se o e-mail já está cadastrado
-      const alunoExistente = this.alunoService.buscarAlunoPorEmail(this.aluno.email);
-      if (alunoExistente) {
-        // E-mail já cadastrado, exiba uma mensagem de erro ou realize a ação necessária
-        console.log('E-mail já cadastrado.');
-        return;
-      }
       this.alunoService.inserirAluno(this.aluno);
       this.router.navigate([""]);
     }

@@ -13,8 +13,8 @@ public class AlunoDTO extends UsuarioDTO {
 	}
 
 	public AlunoDTO(Long id, String nome, String email, String telefone, String papel, String grr,
-			GraduacaoDTO graduacao, boolean success, String message) {
-		super(id, nome, email, telefone, papel, success, message);
+			GraduacaoDTO graduacao) {
+		super(id, nome, email, telefone, papel);
 		this.grr = grr;
 		this.graduacao = graduacao;
 	}
@@ -38,7 +38,6 @@ public class AlunoDTO extends UsuarioDTO {
 	@Override
 	public String toString() {
 		return "AlunoDTO [id=" + getId() + ", nome=" + getNome() + ", email=" + getEmail() + ", telefone="
-				+ getTelefone() + ", papel=" + getPapel() + ", grr=" + grr + ", graduacao=" + graduacao + ", success="
-				+ isSuccess() + ", message=" + getMessage() + "]";
+				+ getTelefone() + ", papel=" + getPapel() + ", grr=" + grr + ", graduacao=" + graduacao + "]";
 	}
 }

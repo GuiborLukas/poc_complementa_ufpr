@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Graduacao {
@@ -19,8 +20,11 @@ public class Graduacao {
 
     private String nome;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Coordenador coordenador;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<ServidorCoordenador> servidoresCoordenadores;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Competencia> competencias;
@@ -52,6 +56,14 @@ public class Graduacao {
 
     public void setCoordenador(Coordenador coordenador) {
         this.coordenador = coordenador;
+    }
+
+    public List<ServidorCoordenador> getServidoresCoordenadores() {
+        return servidoresCoordenadores;
+    }
+
+    public void setServidoresCoordenadores(List<ServidorCoordenador> servidoresCoordenadores) {
+        this.servidoresCoordenadores = servidoresCoordenadores;
     }
 
     public List<Competencia> getCompetencias() {
