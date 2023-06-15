@@ -35,9 +35,10 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     if (this.formLogin.form.valid) {
       this.loginService.login(this.login).subscribe(
-        (usuario: Usuario) => {
-          if ((usuario != null)) {
-            let usu = usuario;
+        (response: Usuario) => {
+          if (response != null) {
+            let usu = response;
+            alert([`${usu.id}\n${usu.nome}\n${usu.email}\n${usu.telefone}\n${usu.papel}`]);
             this.loginService.usuarioLogado = usu;
             this.loading = false;
             this.router.navigate([`${usu.papel}`]);

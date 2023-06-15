@@ -29,6 +29,10 @@ const routes: Routes = [
     component: AutocadastroComponent
   },
   {
+    path: 'admin',
+    component: HomeUsuarioComponent
+  },
+  {
     path: 'admin/home',
     component: HomeUsuarioComponent
   },

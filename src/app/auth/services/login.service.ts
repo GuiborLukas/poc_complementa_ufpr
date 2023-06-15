@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, map, of, take } from 'rxjs';
 import { Usuario, Login } from 'src/app/shared';
+import { ApiResponseLogin } from 'src/app/interfaces/api-response-login';
 
 const LS_CHAVE: string = 'usuarioLogado';
 
@@ -35,7 +36,10 @@ export class LoginService {
   }
 
   login(login: Login): Observable<Usuario> {
-    return this.httpClient.post<Usuario>(this.BASE_URL, JSON.stringify(login), this.httpOptions);
-    }
-    
+    return this.httpClient.post<ApiResponseLogin>(this.BASE_URL, JSON.stringify(login), this.httpOptions)
+      .pipe(
+        map(response => response.data)
+      );
+  }
+  
 }
