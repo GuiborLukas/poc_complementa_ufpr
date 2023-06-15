@@ -77,23 +77,6 @@ public class AlunoREST {
 		}
 	}
 
-	@PostMapping("/autocadastro")
-	public ResponseEntity<AlunoDTO> autocadastrarAluno(@RequestBody Aluno aluno) {
-
-		try {
-			aluno.setSenha(bCryptPasswordEncoder.encode(aluno.getSenha()));
-			Aluno aln = repo.save(mapper.map(aluno, Aluno.class));
-			Optional<Aluno> alnOpt = repo.findById(aln.getId());
-			if (!alnOpt.isPresent()) {
-				throw new Exception("Criação do aluno não foi realizada com sucesso");
-			}
-			return ResponseEntity.status(HttpStatus.CREATED).body(mapper.map(alnOpt.get(), AlunoDTO.class));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-		}
-	}
-
-	
 	@PutMapping("/{id}")
 	public ResponseEntity<AlunoDTO> alterarAluno(@PathVariable("id") long id, @RequestBody Aluno aluno) {
 		Optional<Aluno> aln = repo.findById(id);

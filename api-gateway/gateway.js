@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.use(cookieParser());
 
-const servicesProxy = httpProxy('http://localhost:5000');
+const servicesProxy = httpProxy('http://localhost:5000/');
 
 function verifyJWT(req, res, next) {
     
@@ -44,51 +44,53 @@ function verifyJWT(req, res, next) {
     });
 }
 
-app.post('/login', (req, res, next) => {
+app.post('login', (req, res, next) => {
     authServiceProxy(req, res, next);
     })
 
-app.post('/logout', function (req, res) {
+app.post('logout', function (req, res) {
     res.json({ auth: false, token: null });
 })
 
-app.post('/usuarios', verifyJWT, (req, res, next) => {
+app.post('usuarios', verifyJWT, (req, res, next) => {
     servicesProxy(req, res, next);
 })
 
-app.get('/usuarios', verifyJWT, (req, res, next) => {
+app.get('usuarios', verifyJWT, (req, res, next) => {
   servicesProxy(req, res, next);
 })
 
-app.put('/usuarios', verifyJWT, (req, res, next) => {
+app.put('usuarios', verifyJWT, (req, res, next) => {
   servicesProxy(req, res, next);
 })
 
-app.delete('/usuarios', verifyJWT, (req, res, next) => {
+app.delete('usuarios', verifyJWT, (req, res, next) => {
   servicesProxy(req, res, next);
 })
 
-app.post('/alunos', verifyJWT, (req, res, next) => {
+app.post('alunos', verifyJWT, (req, res, next) => {
     servicesProxy(req, res, next);
 })
 
-app.get('/alunos', verifyJWT, (req, res, next) => {
+app.get('alunos', verifyJWT, (req, res, next) => {
   servicesProxy(req, res, next);
 })
 
-app.put('/alunos', verifyJWT, (req, res, next) => {
+app.put('alunos', verifyJWT, (req, res, next) => {
   servicesProxy(req, res, next);
 })
 
-app.delete('/alunos', verifyJWT, (req, res, next) => {
+app.delete('alunos', verifyJWT, (req, res, next) => {
 servicesProxy(req, res, next);
 })
 
-app.post('/alunos/autocadastro', (req, res, next) => {
+app.post('autocadastro', (req, res, next) => {
   servicesProxy(req, res, next);
   })
 
-const authServiceProxy = httpProxy('http://localhost:5000', {
+
+
+const authServiceProxy = httpProxy('http://localhost:5000/', {
 
     proxyReqBodyDecorator: function (bodyContent, srcReq) {
         try {

@@ -15,7 +15,7 @@ export class AutocadastroComponent implements OnInit {
   @ViewChild('formAluno') formAluno!: NgForm;
 
   aluno!: Aluno;
-
+  
   senha: string = '';
   confirmarSenha: string = '';
   senhaValida: boolean = false;
@@ -36,7 +36,9 @@ export class AutocadastroComponent implements OnInit {
   autocadastrar(): void {
     if (this.formAluno.form.valid) {
       this.aluno.senha = this.senha;
+      this.aluno.papel = "aluno";
       this.alunoService.autocadastrarAluno(this.aluno);
+      alert(`Um e-mail de confirmação foi enviado ao ${this.aluno.email}`);
       this.router.navigate([""]);
     }
   }
