@@ -11,7 +11,7 @@ const LS_CHAVE: string = "alunos"
   providedIn: 'root'
 })
 export class AlunoService {
-  BASE_URL = "http://localhost:3000/alunos/";
+  BASE_URL = "http://localhost:3000/";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -31,27 +31,27 @@ export class AlunoService {
   constructor(private httpClient: HttpClient) { }
 
   listarTodosAlunos(): Observable<Aluno[]> {
-    return this.httpClient.get<Aluno[]>(this.BASE_URL, this.httpOptions);
+    return this.httpClient.get<Aluno[]>(this.BASE_URL + 'alunos/', this.httpOptions);
   }
 
   inserirAluno(aluno: Aluno): Observable<Aluno> {
-    return this.httpClient.post<Aluno>(this.BASE_URL, JSON.stringify(aluno), this.httpOptions);
+    return this.httpClient.post<Aluno>(this.BASE_URL + 'alunos/', JSON.stringify(aluno), this.httpOptions);
   }
 
   autocadastrarAluno(aluno: Aluno): Observable<Aluno> {
-    return this.httpClient.post<Aluno>(this.BASE_URL + 'autocadastro', JSON.stringify(aluno), this.httpOptions);
+    return this.httpClient.post<Aluno>(this.BASE_URL + 'autocadastro', aluno, this.httpOptions);
   }
 
   buscarAlunoPorId(id: number): Observable<Aluno> {
-    return this.httpClient.get<Aluno>(this.BASE_URL + id, this.httpOptions);
+    return this.httpClient.get<Aluno>(this.BASE_URL + 'alunos/' + id, this.httpOptions);
   }
 
   atualizarAluno(aluno: Aluno): Observable<Aluno> {
     this.alunoLogado = aluno;
-    return this.httpClient.put<Aluno>(this.BASE_URL + aluno.id, JSON.stringify(aluno), this.httpOptions);
+    return this.httpClient.put<Aluno>(this.BASE_URL + 'alunos/' + aluno.id, JSON.stringify(aluno), this.httpOptions);
   }
 
   removerAluno(id: number): Observable<Aluno> {
-    return this.httpClient.delete<Aluno>(this.BASE_URL + id, this.httpOptions);
+    return this.httpClient.delete<Aluno>(this.BASE_URL + 'alunos/' + id, this.httpOptions);
   }
 }

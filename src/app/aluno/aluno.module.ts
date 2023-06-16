@@ -7,8 +7,7 @@ import { HomeAlunoComponent } from './home-aluno/home-aluno.component';
 import { AlunoService } from './services/aluno.service';
 import { NgxMaskModule } from 'ngx-mask';
 import { EditarAlunoComponent } from './editar-aluno/editar-aluno.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     FormsModule,
     RouterModule,
-    NgxMaskModule.forRoot(),
-    MatDialogModule,
-    MatButtonModule
+    NgxMaskModule.forRoot()
   ],
   providers: [
     AlunoService

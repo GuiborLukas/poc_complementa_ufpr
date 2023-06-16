@@ -37,9 +37,15 @@ export class AutocadastroComponent implements OnInit {
     if (this.formAluno.form.valid) {
       this.aluno.senha = this.senha;
       this.aluno.papel = "aluno";
-      this.alunoService.autocadastrarAluno(this.aluno);
-      alert(`Um e-mail de confirmação foi enviado para ${this.aluno.email}`);
-      this.router.navigate([""]);
+      this.alunoService.autocadastrarAluno(this.aluno).subscribe(
+        (response) => {
+          alert(`Um e-mail de confirmação foi enviado para ${response.email}`);
+          this.router.navigate([""]);
+        },
+        (error) => {
+          console.error("Erro ao cadastrar aluno:", error);
+        }
+      );
     }
   }
 

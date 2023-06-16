@@ -11,8 +11,11 @@ export class Monitor extends Aluno {
         senha?: string,
         papel?: string,
         grr?: string,
-        graduacao?: Graduacao) {
-        super(id, nome, email, telefone, senha, papel, grr, graduacao);
+        //graduacao?: Graduacao
+        ) {
+        super(id, nome, email, telefone, senha, papel, grr
+            //, graduacao
+            );
     }
 
 }
