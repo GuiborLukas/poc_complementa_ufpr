@@ -51,7 +51,7 @@ export class AutocadastroComponent implements OnInit {
 
   verificarSenha() {
     // Verificar se a senha atende às condições específicas
-    const senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,16}$/;
+    const senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$/;
 
     if (
       senhaRegex.test(this.senha) &&
