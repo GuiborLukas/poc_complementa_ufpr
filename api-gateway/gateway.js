@@ -96,50 +96,61 @@ const authServiceProxy = httpProxy('http://localhost:5000', {
 
 console.log(`Configurando rota de autocadastro`)
 app.post('/autocadastro', (req, res, next) => {
+  console.log(`Roteando POST de http://localhost:${PORT}/autocadastro para http://localhost:5000/autocadastro`);
   servicesProxy(req, res, next);
 })
 
 console.log(`Configurando rota de login`)
 app.post('/login', (req, res, next) => {
+  console.log(`Roteando POST de http://localhost:${PORT}/login para http://localhost:5000/login`);
   authServiceProxy(req, res, next);
 })
 
 console.log(`Configurando rota de logout`)
 app.post('/logout', function (req, res) {
+  console.log(`Roteando POST de http://localhost:${PORT}/logout para http://localhost:5000/logout`);
   res.json({ auth: false, token: null });
 })
 
 console.log(`Configurando rotas de usuario`)
 app.post('/usuarios', verifyJWT, (req, res, next) => {
+  console.log(`Roteando POST de http://localhost:${PORT}/usuarios para http://localhost:5000/usuarios`);
   servicesProxy(req, res, next);
 })
 
 app.get('/usuarios', verifyJWT, (req, res, next) => {
+  console.log(`Roteando GET de http://localhost:${PORT}/usuarios para http://localhost:5000/usuarios`);
   servicesProxy(req, res, next);
 })
 
 app.put('/usuarios', verifyJWT, (req, res, next) => {
+  console.log(`Roteando PUT de http://localhost:${PORT}/usuarios para http://localhost:5000/usuarios`);
   servicesProxy(req, res, next);
 })
 
 app.delete('/usuarios', verifyJWT, (req, res, next) => {
+  console.log(`Roteando DELETE de http://localhost:${PORT}/usuarios para http://localhost:5000/usuarios`);
   servicesProxy(req, res, next);
 })
 
 console.log(`Configurando rota de aluno`)
 app.post('/alunos', verifyJWT, (req, res, next) => {
+  console.log(`Roteando POST de http://localhost:${PORT}/alunos para http://localhost:5000/alunos`);
   servicesProxy(req, res, next);
 })
 
 app.get('/alunos', verifyJWT, (req, res, next) => {
+  console.log(`Roteando GET de http://localhost:${PORT}/alunos para http://localhost:5000/alunos`);
   servicesProxy(req, res, next);
 })
 
 app.put('/alunos', verifyJWT, (req, res, next) => {
+  console.log(`Roteando PUT de http://localhost:${PORT}/alunos para http://localhost:5000/alunos`);
   servicesProxy(req, res, next);
 })
 
 app.delete('/alunos', verifyJWT, (req, res, next) => {
+  console.log(`Roteando DELETE de http://localhost:${PORT}/alunos para http://localhost:5000/alunos`);
   servicesProxy(req, res, next);
 })
 
