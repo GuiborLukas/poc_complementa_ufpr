@@ -5,27 +5,26 @@ import { AlunoModule } from './aluno/aluno.module';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { AdminModule } from './admin/admin.module';
-
-
+import { CardsModule } from './cards/cards.module';
 
 @NgModule({
-  declarations: [
-    
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     UsuarioModule,
     AlunoModule,
     AuthModule,
     PagesModule,
-    AdminModule
+    AdminModule,
+    CardsModule
   ],
   exports:[
     UsuarioModule,
     AlunoModule,
     AuthModule,
     PagesModule,
-    AdminModule
+    AdminModule,
+    CardsModule
   ]
 })
 export class ComponentsModule { }

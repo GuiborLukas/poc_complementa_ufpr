@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class DashAdminComponent {
 
+  aprendaUsarImg: string = '/assets/imgs/Rectangle 39.png';
+
 }

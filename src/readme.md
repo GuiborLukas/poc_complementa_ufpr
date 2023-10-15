@@ -18,14 +18,14 @@ Para iniciar o servidor Angular, execute o seguinte comando no terminal:
      ACCESS_TOKEN_SECRET="<coloque qualquer coisa aqui entre aspas duplas>"
      REFRESH_TOKEN_SECRET="<coloque qualquer coisa aqui entre aspas duplas>"
      ```
-
-2. No terminal, dentro da pasta `/api-gateway`, execute o seguinte comando para iniciar o servidor back-end:
-<br>```node gateway.js```
-
-
-3. No caminho `poc_complementa_ufpr/server/complementa-ufpr/src/main/java/br/ufpr/`, siga estas etapas:
+2. No caminho `poc_complementa_ufpr/server/complementa-ufpr/src/main/java/br/ufpr/`, siga estas etapas:
 
 - Clique com o botão direito do mouse em `ComplementaUfprApplication.java`.
 - Selecione a opção "Run Java" para iniciar o servidor back-end.
+
+
+
+3. No terminal, dentro da pasta `/api-gateway`, execute o seguinte comando para iniciar o servidor back-end:
+<br>```node gateway.js```
 
 
