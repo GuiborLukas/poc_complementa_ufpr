@@ -5,6 +5,7 @@ import { AutocadastroComponent } from './components/aluno/autocadastro/autocadas
 import { HomeUsuarioComponent } from './components/usuario/home-usuario/home-usuario.component';
 import { EditarAlunoComponent } from './components/aluno/editar-aluno/editar-aluno.component';
 import { LoginRoutes } from './components/auth/auth-routing.module';
+import { DashAdminComponent } from './components/admin/dash-admin/dash-admin.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,9 @@ const routes: Routes = [
   {
     path: 'admin/home',
     component: HomeUsuarioComponent
+  },
+  {
+    path: 'dashAdmin', component: DashAdminComponent
   },
   ...LoginRoutes
 ];
