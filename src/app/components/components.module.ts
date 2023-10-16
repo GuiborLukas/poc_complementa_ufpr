@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { AdminModule } from './admin/admin.module';
 import { CardsModule } from './cards/cards.module';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [],
@@ -16,7 +17,8 @@ import { CardsModule } from './cards/cards.module';
     AuthModule,
     PagesModule,
     AdminModule,
-    CardsModule
+    CardsModule,
+    LayoutModule
   ],
   exports:[
     UsuarioModule,
@@ -24,7 +26,8 @@ import { CardsModule } from './cards/cards.module';
     AuthModule,
     PagesModule,
     AdminModule,
-    CardsModule
+    CardsModule,
+    LayoutModule
   ]
 })
 export class ComponentsModule { }
