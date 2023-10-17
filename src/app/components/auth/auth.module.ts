@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { LayoutModule } from '../layout/layout.module';
+import { SelfRegisterComponent } from './login/self-register/self-register.component';
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    SelfRegisterComponent
   ],
   imports: [
     CommonModule,

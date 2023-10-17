@@ -116,3 +116,11 @@
     margin-right: 0;
 }
 
+.self-register-popup {
+    position:relative;
+    background-color: black;
+    color: white;
+    margin: auto;
+
+
+}

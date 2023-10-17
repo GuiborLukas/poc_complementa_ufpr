@@ -25,7 +25,7 @@
     </form>
     <div class="no-account">
       <p>Não tem conta?</p>
-      <button class="btn btn-secondary" id="register">Cadastre-se</button>
+      <button class="btn btn-secondary" id="register" (click)="showSelfRegister()">Cadastre-se</button>
     </div>
   </div>
   <div class="col-lg-9 col-md-8 col-s-7 col-xs-6 d-none d-md-block right-column">
@@ -69,4 +69,5 @@
       </div>
     </div>
   </div>
+  <app-self-register *ngIf="show" class="self-register-popup"></app-self-register>
 </div>

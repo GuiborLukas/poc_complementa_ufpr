@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login, Usuario} from 'src/app/shared';
 import { LoginService } from '../services/login.service';
+import { SelfRegisterComponent } from './self-register/self-register.component';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   login: Login = new Login();
   loading: boolean = false;
   message!: string;
+  show: boolean=false;
 
   constructor(
     private loginService: LoginService,
@@ -48,5 +50,9 @@ export class LoginComponent implements OnInit {
         });
     }
     this.loading = false;
+  }
+
+  showSelfRegister(){
+    this.show=true;
   }
 }

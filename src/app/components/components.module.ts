@@ -9,7 +9,8 @@ import { CardsModule } from './cards/cards.module';
 import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     UsuarioModule,
