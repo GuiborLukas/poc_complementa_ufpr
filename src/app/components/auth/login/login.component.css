@@ -2,9 +2,28 @@
     height: 94.8vh;
 }
 
+@media (max-width: 767px) {
+    .small-image {
+        display:float;
+        max-width: 80vw;
+        margin-top: -25vh;
+
+    }
+
+    .login-side {
+        padding: 0 5vw !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .small-image {
+        display: none;
+    }
+}
+
 .login-side {
     text-align: center;
-    padding-left: 2vw;
+    padding: 0 2vw;
     margin: auto 0;
 }
 
@@ -67,7 +86,13 @@
 
 .right-column {
     background-color: #eef5f9;
-    height: calc(100%-32px);
+    height: 100%;
+
+}
+
+.right-column-row {
+    padding: 0 5vw;
+    margin-top: 2vh;
 }
 
 .large-logo img {
@@ -77,13 +102,17 @@
 
 .login-card{
     border-radius: 25px;
-    max-width: 30vw;
-    min-height: 15vh;
+    min-height: 20vh;
     text-align: center;
+
 
 }
 
 .card-data {
     margin: auto 0;
+}
+
+.left-card {
+    margin-right: 0;
 }
 
