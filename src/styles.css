@@ -6,3 +6,17 @@ body * {
     font-family: 'Poppins';
     font-weight: bold;
 }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+app-root {
+    height: 100%;
+    display: block;
+}

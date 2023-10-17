@@ -1,133 +1,53 @@
-<!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
-<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-  data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-  <!-- ============================================================== -->
-  <!-- Topbar header - style you can find in pages.scss -->
-  <!-- ============================================================== -->
-  <header class="topbar" data-navbarbg="skin5">
-    <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-      <div class="navbar-header" data-logobg="skin6">
-        <!-- ============================================================== -->
-        <!-- Logo -->
-        <!-- ============================================================== -->
-        <a class="navbar-brand" href="#">
-          <!-- Logo text -->
-          <span class="logo-text">
-            <!-- dark Logo text -->
-            <img src="assets/plugins/images/logo_complementa.svg" alt="homepage" width="179" height="54" />
-          </span>
-        </a>
-        <!-- ============================================================== -->
-        <!-- End Logo -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- toggle and nav items -->
-        <!-- ============================================================== -->
-        <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i
-            class="ti-menu ti-close"></i></a>
-      </div>
-      <!-- ============================================================== -->
-      <!-- End Logo -->
-      <!-- ============================================================== -->
-      <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-        <!-- ============================================================== -->
-        <!-- Right side toggle and nav items -->
-        <!-- ============================================================== -->
-        <ul class="navbar-nav ms-auto d-flex align-items-center"></ul>
-      </div>
-    </nav>
-  </header>
-  <!-- ============================================================== -->
-  <!-- End Topbar header -->
-  <!-- ============================================================== -->
-  <!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
-<!-- ============================================================== -->
-<div *ngIf="usuarioLogado; else barlessDiv" id="main-wrapper" data-layout="vertical" data-navbarbg="skin5"
-  data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-  <aside *ngIf="usuarioLogado" class="left-sidebar" data-sidebarbg="skin6">
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
-      <!-- Sidebar navigation-->
-      <nav class="sidebar-nav">
-        <ul id="sidebarnav" [ngSwitch]="usuarioLogado.papel">
-          <div *ngSwitchCase="'admin'">
-            <li class="sidebar-item pt-2">
-              <a [routerLink]="['/admin']" class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                aria-expanded="false">
-                <i class="far fa-user" aria-hidden="true"></i>
-                <span class="hide-menu">Administrador</span>
-              </a>
-            </li>
-            <li class="sidebar-item pt-2">
-              <a [routerLink]="['/admin/home']" class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                aria-expanded="false">
-                <i class="far fa-clock" aria-hidden="true"></i>
-                <span class="hide-menu">Dashboard</span>
-              </a>
-            </li>
-          </div>
-          <div *ngSwitchDefault>
-            <li class="sidebar-item pt-2">
-              <a [routerLink]="['/aluno']" class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                aria-expanded="false">
-                <i class="far fa-clock" aria-hidden="true"></i>
-                <span class="hide-menu">Dashboard</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a [routerLink]="['/aluno/editar', usuarioLogado.id]"
-                class="sidebar-link waves-effect waves-dark sidebar-link" href="/aluno" aria-expanded="false">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span class="hide-menu">Editar Perfil</span>
-              </a>
-            </li>
-          </div>
-          <li class="sidebar-item">
-            <a (click)="logout($event)" class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-              aria-expanded="false">
-              <i class="fa fa-sign-out" aria-hidden="true"></i>
-              <span class="hide-menu">LogOut</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- End Sidebar navigation -->
-    </div>
-    <!-- End Sidebar scroll-->
-  </aside>
-  <router-outlet></router-outlet>
-</div>
-<ng-template #barlessDiv>
-  <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-    data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    <aside class="left-sidebar" data-sidebarbg="skin6">
-      <!-- Sidebar scroll-->
-      <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-          <ul id="sidebarnav">
-            <li class="sidebar-item pt-2">
-              <a [routerLink]="['/login']" class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                aria-expanded="false">
-                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                <span class="hide-menu">Login</span>
-              </a>
-            <li class="sidebar-item pt-2">
-              <a [routerLink]="['/autocadastro']" class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-                aria-expanded="false">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span class="hide-menu">Autocadastro</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+
+<!-- End Page wrapper -->
+
+<div *ngIf="usuarioLogado; else barlessDiv" class="container-fluid h-100">
+  <div class="row h-100">
+    <aside *ngIf="usuarioLogado" class="col-md-2 p-0 left-sidebar bg-skin6 h-100">
+      <div class="scroll-sidebar h-100">
+          <app-navbar></app-navbar>
       </div>
     </aside>
-    <router-outlet></router-outlet>
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<ng-template #barlessDiv>
+  <div class="container-fluid">
+    <div class="row">
+      <aside class="col-md-2 left-sidebar bg-skin6">
+        <div class="scroll-sidebar">
+          <!-- Sidebar navigation -->
+          <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+              <li class="sidebar-item pt-2">
+                <a [routerLink]="['/login']" class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                  aria-expanded="false">
+                  <i class="fa fa-sign-in" aria-hidden="true"></i>
+                  <span class="hide-menu">Login</span>
+                </a>
+              </li>
+              <li class="sidebar-item pt-2">
+                <a [routerLink]="['/autocadastro']" class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                  aria-expanded="false">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <span class="hide-menu">Autocadastro</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+      <div class="col-md-10">
+        <router-outlet></router-outlet>
+      </div>
+      
+    </div>
   </div>
 </ng-template>
+<div class="col-md-12">
+  <app-footer></app-footer>
+</div>
