@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon'; 
+
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 })
 // type UserRole = 
 export class NavbarComponent {
-  userRole: string = 'coordenadorOrientador'; // Altere para o perfil do usuário logado:
-                              // 'aluno' | 'coordenadorOrientador' | 'orientador' | 'administrador';
+  userRole: string = 'profOrientador'; // Altere para o perfil do usuário logado:
+                              // 'aluno' | 'coordenadorOrientador' | 'profOrientador' | 'Administrador';
 
   checkRole(role: string): boolean {
     return this.userRole === role;
