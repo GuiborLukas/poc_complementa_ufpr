@@ -1,31 +1,29 @@
 <div class="row full-page">
   <div class="col-lg-3 col-md-4 col-s-5 col-xs-6 login-side">
-    <img src="" src="./assets/plugins/images/logo_complementa.svg" class="small-image" alt="Login Image">
-    <form class="login-form">
-      <label for="email" class="form-label">E-mail</label>
-      <input
-        type="text"
-        class="form-control"
-        id="email"
-        placeholder="Digite o seu email"
-      />
-
-      <label for="password" class="form-label" id="password">Senha</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password-field"
-        placeholder="Digite a sua senha"
-      />
-      <p class="forgot-password">Esqueceu sua senha?</p>
-
-      <button type="submit" class="btn btn-primary" id="submit-button">
+    <img
+      src=""
+      src="./assets/plugins/images/logo_complementa.svg"
+      class="small-image"
+      alt="Login Image"
+    />
+    <form>
+      <mat-form-field class="login-field">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput>
+      </mat-form-field>
+      <mat-form-field class="login-field">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput>
+        <mat-hint align="end" class="forgot-password"> Esqueceu sua senha?</mat-hint>
+      </mat-form-field>   
+      <button mat-button type="submit" class="btn btn-primary" id="submit-button">
         Fazer login
       </button>
     </form>
     <div class="no-account">
       <p>Não tem conta?</p>
-      <button class="btn btn-secondary" id="register" (click)="showSelfRegister()">Cadastre-se</button>
+      <button mat-button class="btn btn-success" id="dialog-button" (click)="openDialog()">Cadastre-se</button>
+
     </div>
   </div>
   <div class="col-lg-9 col-md-8 col-s-7 col-xs-6 d-none d-md-block right-column">
@@ -69,5 +67,5 @@
       </div>
     </div>
   </div>
-  <app-self-register *ngIf="show" class="self-register-popup"></app-self-register>
 </div>
+<app-autocadastro mat-dialog role="dialog" [ngStyle]="{ display: display}"></app-autocadastro>

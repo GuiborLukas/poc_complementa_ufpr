@@ -3,7 +3,10 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login, Usuario} from 'src/app/shared';
 import { LoginService } from '../services/login.service';
-import { SelfRegisterComponent } from './self-register/self-register.component';
+import { AutocadastroComponent } from '../../aluno/autocadastro/autocadastro.component';
+import { MatDialog } from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @Component({
   selector: 'app-login',
@@ -16,11 +19,13 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   message!: string;
   show: boolean=false;
+  display="none";
 
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {
     if (this.loginService.usuarioLogado) {
       this.router.navigate([`${this.loginService.usuarioLogado.papel}`]);
@@ -52,7 +57,20 @@ export class LoginComponent implements OnInit {
     this.loading = false;
   }
 
-  showSelfRegister(){
-    this.show=true;
+  openModal() {
+    this.display = "block";
   }
+  onCloseHandled() {
+    this.display = "none";
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AutocadastroComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
 }

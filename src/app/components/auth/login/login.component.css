@@ -27,42 +27,26 @@
     margin: auto 0;
 }
 
-.login-form {
-    position: relative;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: flex;
-    margin: auto 0;
-    text-align: right !important;
-}
-
-.login-form input {
-    max-height: 30px;
-    border-radius: 50px;
-    border: 1px solid #373737;
-}
-
-.login-form input ::placeholder {
-    color: #a6a6a6;
-}
-
-.login-form label {
-    margin-bottom: .2vh;
-    margin-left: .5vw;
-}
-
-.login-form #password {
-    margin-top: 3vh;
+.login-field {
+    width: 90%;
 }
 
 #submit-button {
-    width:200PX;
+    width:200px;
+    min-height: 5vh;
     border-radius: 50px;
     margin: 3vh auto;
     color: white;
-    background-image: linear-gradient(#46c8e4,#48a2e7);
+    background-image: linear-gradient(#318b35,#297e42);
     border: 0px;
+}
+
+#dialog-button {
+    width: 150px;
+    min-height: 5vh;
+    border-radius: 50px;
+    background-image: linear-gradient(#46c8e4,#48a2e7);
+    color: white;
 }
 
 .forgot-password {
@@ -92,12 +76,13 @@
 
 .right-column-row {
     padding: 0 5vw;
-    margin-top: 2vh;
+    margin-top: 3vh;
 }
+
 
 .large-logo img {
     max-width: 30vw;
-    margin: 10vh 20vw;
+    margin: 10vh 20vw 5vh 20vw;
 }
 
 .login-card{
@@ -114,13 +99,4 @@
 
 .left-card {
     margin-right: 0;
-}
-
-.self-register-popup {
-    position:relative;
-    background-color: black;
-    color: white;
-    margin: auto;
-
-
 }

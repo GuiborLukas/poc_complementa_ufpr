@@ -1,9 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Aluno, Graduacao } from 'src/app/shared';
 import { AlunoService } from '../services/aluno.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable, map, startWith } from 'rxjs';
+
+
+
 
 @Component({
   selector: 'app-autocadastro',
@@ -11,6 +16,7 @@ import { AlunoService } from '../services/aluno.service';
   styleUrls: ['./autocadastro.component.css']
 })
 export class AutocadastroComponent implements OnInit {
+  @Output() close: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('formAluno') formAluno!: NgForm;
 
@@ -23,16 +29,39 @@ export class AutocadastroComponent implements OnInit {
   mostrarConfirmarSenha: boolean = false;
   grrValido: boolean = true;
 
+  myControl = new FormControl('');
+  options: string[]=[
+    'Administração','Agronomia','Arquitetura e Urbanismo','Artes Visuais','Biomedicina','Ciências Biológicas','Ciências Contábeis','Ciências da Computação',
+    'Ciências Econômicas','Ciências Sociais','Design de Produto','Design Gráfico','Direito','Educação Física','Enfermagem','Engenharia Ambiental','Engenharia Cartográfica e de Agrimensura',
+    'Engenharia Civil','Engenharia de Bioprocessos e Biotecnologia','Engenharia de Produção','Engenharia Elétrica','Engenharia Florestal','Engenharia Industrial Madereira',
+    'Engenharia Mecânica','Engenharia Química','Estatística','Expressão Gráfica','Fármacia','Filosofia','Física','Fisioterapia','Geografia','Geologia','Gestão da Informação',
+    'História','História Memória e Imagem','Informática Biomédica','Jornalismo','Letras','Letras Libras','Matemática','Matemática Industrial','Medicina','Medicina Veterinária',
+    'Música','Nutrição','Odontologia','Pedagogia','Psicologia','Publicidade e Propaganda','Química','Relações Públicas','Tecnologia em Análise e Desenvolvimento de Sistemas',
+    'Tecnologia em Comunicação Institucional','Tecnologia em Gestão da Qualidade','Tecnologia em Gestão Pública','Tecnologia em Luteria','Tecnologia em Negócios Imobiliários',
+    'Tecnologia em Produção Cênica','Tecnologia em Secretariado','Terapia Ocupacional','Turismo','Zootecnia'
+  ];
+  filteredOptions!: Observable<string[]>;
+
   constructor(
     private router: Router,
-    private alunoService: AlunoService
+    private alunoService: AlunoService,
+    public dialog: MatDialog
   ) {
   }
 
   ngOnInit(): void {
     this.aluno = new Aluno();
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
   }
 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
   autocadastrar(): void {
     if (this.formAluno.form.valid) {
       this.aluno.senha = this.senha;
@@ -67,5 +96,11 @@ export class AutocadastroComponent implements OnInit {
     const regex = /^20\d{6}$/;
     this.grrValido = regex.test(this.aluno.grr);
   }
+
+  closeModal() {
+    this.close.emit();
+  }
+
+
 
 }
